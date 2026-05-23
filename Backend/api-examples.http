@@ -1,0 +1,37 @@
+### Memory Gallery API — sample requests  
+### REST Client (VS Code/Cursor): Install "REST Client", then "Send Request"
+
+@baseUrl = http://localhost:5000
+
+### 1) Health — GET / (sanity check; open in browser too)
+GET {{baseUrl}}/
+
+
+### 2) POST /api/auth/register
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Sample User",
+  "email": "sample.user@example.com",
+  "password": "password123"
+}
+
+
+### 3) POST /api/auth/login — save token from response for uploads
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "sample.user@example.com",
+  "password": "password123"
+}
+
+
+### 4) GET /api/memories — public (no Bearer token)
+GET {{baseUrl}}/api/memories
+
+
+### --- POST /api/memories ---
+### Multipart only: Authorization: Bearer <token>, fields: image (file), caption, location, activity
+### Easiest checks: curl (Windows PowerShell) or Postman / Thunder Client — see your chat reply for full curl.
